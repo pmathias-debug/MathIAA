@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10111a">
+  <meta name="description" content="MathIA, tu asistente inteligente.">
+  <title>MathIA — Inteligencia artificial</title>
+
+  <link rel="icon" href="/MathIA-logo-full.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/script.js" defer></script>
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- BARRA LATERAL -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-header">
+        <a class="brand" href="/" aria-label="MathIA inicio">
+          <img src="/MathIA-logo-full.png" alt="MathIA">
+        </a>
+
+        <button class="icon-btn" id="collapseSidebar" title="Cerrar barra lateral">
+          <i data-lucide="panel-left-close"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-search">
+        <i data-lucide="search"></i>
+        <input id="searchChats" type="search" placeholder="Buscar">
+        <kbd>Ctrl K</kbd>
+      </div>
+
+      <nav class="main-navigation">
+
+        <button class="nav-item active" id="newChat">
+          <i data-lucide="plus"></i>
+          <span>Nuevo chat</span>
+        </button>
+
+        <button class="nav-item" data-section="images">
+          <i data-lucide="image"></i>
+          <span>Imágenes</span>
+        </button>
+
+        <button class="nav-item" data-section="tasks">
+          <i data-lucide="calendar-clock"></i>
+          <span>Tareas programadas</span>
+        </button>
+
+        <button class="nav-item" data-section="plugins">
+          <i data-lucide="blocks"></i>
+          <span>Complementos</span>
+        </button>
+
+        <button class="nav-item" data-section="codex">
+          <i data-lucide="code-2"></i>
+          <span>Codex</span>
+        </button>
+
+        <button class="nav-item" data-section="projects">
+          <i data-lucide="folder-code"></i>
+          <span>Explorar proyectos</span>
+        </button>
+
+      </nav>
+
+      <div class="recent-section">
+        <div class="section-heading">
+          <span>Recientes</span>
+          <button class="icon-btn small" id="saveCurrentChat" title="Guardar chat">
+            <i data-lucide="bookmark"></i>
+          </button>
+        </div>
+
+        <div class="chat-list" id="chatList">
+          <p class="empty-chats">Tus conversaciones aparecerán aquí.</p>
+        </div>
+      </div>
+
+      <div class="sidebar-bottom">
+
+        <div class="upgrade-card">
+          <div class="upgrade-icon">
+            <i data-lucide="sparkles"></i>
+          </div>
+          <div>
+            <strong>Mejora tu plan</strong>
+            <span>Descubre más posibilidades</span>
+          </div>
+          <i data-lucide="chevron-right"></i>
+        </div>
+
+        <button class="account-button" id="accountButton">
+          <div class="avatar" id="userAvatar">M</div>
+          <div class="account-info">
+            <strong id="userName">Mi cuenta</strong>
+            <span>Plan gratuito</span>
+          </div>
+          <i data-lucide="ellipsis"></i>
+        </button>
+
+        <div class="account-menu hidden" id="accountMenu">
+          <button data-section="personalize">
+            <i data-lucide="sliders-horizontal"></i>
+            Personalizar
+          </button>
+
+          <button data-section="profile">
+            <i data-lucide="user-round"></i>
+            Perfil
+          </button>
+
+          <button data-section="settings">
+            <i data-lucide="settings"></i>
+            Configuración
+          </button>
+
+          <button id="themeToggle">
+            <i data-lucide="sun-moon"></i>
+            <span>Cambiar apariencia</span>
+          </button>
+
+          <button data-section="help">
+            <i data-lucide="circle-help"></i>
+            Ayuda
+          </button>
+
+          <div class="menu-divider"></div>
+
+          <button class="logout-button" id="logoutButton">
+            <i data-lucide="log-out"></i>
+            Cerrar sesión
+          </button>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn hidden" id="openSidebar">
+            <i data-lucide="panel-left-open"></i>
+          </button>
+          <span class="mobile-brand">MathIA</span>
+          <span class="model-label">MathIA <i data-lucide="chevron-down"></i></span>
+        </div>
+
+        <div class="topbar-right">
+          <button class="icon-btn" id="shareButton" title="Compartir">
+            <i data-lucide="share-2"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- INICIO DEL CHAT -->
+      <section class="welcome-screen" id="welcomeScreen">
+
+        <div class="welcome-logo">
+          <img src="/MathIA-logo-full.png" alt="MathIA">
+        </div>
+
+        <h1>¿En qué puedo ayudarte?</h1>
+
+        <p class="welcome-description">
+          Explora ideas, aprende y crea algo extraordinario.
+        </p>
+
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Explícame un tema de matemáticas de forma sencilla.">
+            <i data-lucide="calculator"></i>
+            <span>Aprender matemáticas</span>
+          </button>
+
+          <button class="suggestion" data-prompt="Ayúdame a resolver un ejercicio paso a paso.">
+            <i data-lucide="book-open"></i>
+            <span>Resolver ejercicios</span>
+          </button>
+
+          <button class="suggestion" data-prompt="Ayúdame a crear un proyecto de programación.">
+            <i data-lucide="code-2"></i>
+            <span>Crear código</span>
+          </button>
+
+          <button class="suggestion" data-prompt="Dame ideas para un proyecto científico innovador.">
+            <i data-lucide="lightbulb"></i>
+            <span>Explorar ideas</span>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- MENSAJES -->
+      <section class="messages hidden" id="messages"></section>
+
+      <!-- ÁREA DE ESCRITURA -->
+      <footer class="composer-area">
+
+        <form class="composer" id="chatForm">
+
+          <textarea
+            id="messageInput"
+            rows="1"
+            placeholder="Pregunta lo que quieras a MathIA..."
+            autocomplete="off"
+            required
+          ></textarea>
+
+          <div class="composer-toolbar">
+            <div class="composer-tools">
+              <button type="button" class="icon-btn" id="attachButton" title="Adjuntar">
+                <i data-lucide="paperclip"></i>
+              </button>
+
+              <button type="button" class="icon-btn" id="imageButton" title="Imágenes">
+                <i data-lucide="image-plus"></i>
+              </button>
+            </div>
+
+            <button class="send-button" id="sendButton" type="submit" title="Enviar">
+              <i data-lucide="arrow-up"></i>
+            </button>
+          </div>
+
+        </form>
+
+        <p class="disclaimer">
+          MathIA puede cometer errores. Verifica la información importante.
+        </p>
+
+      </footer>
+
+    </main>
+  </div>
+
+  <input type="file" id="fileInput" hidden accept="image/*,.pdf,.txt">
+
+  <div class="toast-container" id="toastContainer"></div>
+
+</body>
+</html>
